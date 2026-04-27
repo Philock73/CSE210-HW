@@ -7,9 +7,27 @@ class Program
     {
         Random number = new Random();
         int magic = number.Next(1,100);
-        Console.WriteLine("What is the magic number?");
-        string guess = Console.ReadLine();
-        int guessednumber = int.Parse(guess);
-        Console.WriteLine($"{magic}");
+        int confused = 0;
+        while (confused == 0)
+        {
+             Console.WriteLine("What is the magic number?");
+            string guess = Console.ReadLine();
+            int guessednumber = int.Parse(guess);
+            if (guessednumber == magic)
+            {
+                confused = 1;
+            }
+            else if (guessednumber > magic)
+            {
+                Console.WriteLine("Guess Lower");
+            }
+            else
+            {
+                Console.WriteLine("Guess Higher");
+            }
+        }
+       
+        
+        Console.WriteLine($"That's it! The magic number is:{magic}");
     }
 }

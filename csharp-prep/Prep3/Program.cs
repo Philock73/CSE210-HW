@@ -8,6 +8,7 @@ class Program
         Random number = new Random();
         int magic = number.Next(1,100);
         int confused = 0;
+        int x = 1;
         while (confused == 0)
         {
              Console.WriteLine("What is the magic number?");
@@ -25,9 +26,11 @@ class Program
             {
                 Console.WriteLine("Guess Higher");
             }
+            x++;
         }
        
         
         Console.WriteLine($"That's it! The magic number is:{magic}");
+        Console.WriteLine($"It took you {x} guesses");
     }
 }

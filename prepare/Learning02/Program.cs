@@ -1,9 +1,14 @@
 using System;
+using System.Runtime.InteropServices;
+using System.Security.AccessControl;
+using System.Security.Cryptography.X509Certificates;
 
 class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Learning02 World!");
+        Jobs job = new Jobs();
+        Jobs.GetInfo(job);
+        Jobs.GiveInfo(job);
     }
 }

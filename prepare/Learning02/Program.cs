@@ -7,8 +7,12 @@ class Program
 {
     static void Main(string[] args)
     {
-        Jobs job = new Jobs();
-        Jobs.GetInfo(job);
+        List<Jobs> _job = new List<Jobs>();
+        _job = Jobs.GetInfo();
+        foreach(Jobs job in _job)
+        {
         Jobs.GiveInfo(job);
+        }
+
     }
 }

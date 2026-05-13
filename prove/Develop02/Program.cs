@@ -6,6 +6,11 @@ class Program
     {
         JournalEntry journalEntry = new JournalEntry();
         journalEntry.CreateJournalEntry();
-        journalEntry.DisplayJournalEntry();
+        //journalEntry.DisplayJournalEntry();
+        //Console.WriteLine(journalEntry.CreateFileSystemString());
+
+        Journal myJournal = new Journal();
+        myJournal.AddJournalEntry(journalEntry);
+        myJournal.DisplayJournal();
     }
 }

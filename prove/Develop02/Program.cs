@@ -1,16 +1,31 @@
 using System;
+using System.ComponentModel;
 
 class Program
 {
     static void Main(string[] args)
     {
-        JournalEntry journalEntry = new JournalEntry();
-        journalEntry.CreateJournalEntry();
+       
+        Menu myMenu = new Menu();
         //journalEntry.DisplayJournalEntry();
         //Console.WriteLine(journalEntry.CreateFileSystemString());
-
+        int input = 0;
         Journal myJournal = new Journal();
-        myJournal.AddJournalEntry(journalEntry);
-        myJournal.DisplayJournal();
+        while(input != 5)
+        {
+            input = myMenu.ProcessMenu();
+            switch(input)
+            {
+                case 1:
+                    JournalEntry journalEntry = new JournalEntry();
+                    journalEntry.CreateJournalEntry();
+                    myJournal.AddJournalEntry(journalEntry);
+                    break;
+                case 2:
+                    myJournal.DisplayJournal();
+                    break;
+
+            }
+        }
     }
 }

@@ -19,6 +19,20 @@ class JournalEntry
         _response = Console.ReadLine();
         
     }
+    public JournalEntry()
+    {
+        _date = "";
+        _prompt = "";
+        _response = "";
+    }
+    public JournalEntry(string date, string prompt, string response)
+    {
+        _date = date;
+
+        _prompt = prompt;
+
+        _response = response;
+    }
 
     public void DisplayJournalEntry()
     {

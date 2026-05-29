@@ -25,7 +25,7 @@ class Program
                     myJournal.DisplayJournal();
                     break;
                 case 3:
-
+                    myJournal.ReadFromFile("testjournal.txt");
                     break;
                 case 4:
                     myJournal.WriteToFile("testjournal.txt");

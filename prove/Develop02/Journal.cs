@@ -14,4 +14,14 @@ class Journal
             journalEntry.DisplayJournalEntry();
         }
     }
+    public void WriteToFile(string filename)
+    {
+        using (StreamWriter outputFile = new StreamWriter(filename))
+        {
+            foreach(JournalEntry entry in _journalentries)
+            {
+                outputFile.WriteLine(entry.CreateFileSystemString());
+            }
+        }
+    }
 }

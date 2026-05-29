@@ -24,6 +24,12 @@ class Program
                 case 2:
                     myJournal.DisplayJournal();
                     break;
+                case 3:
+
+                    break;
+                case 4:
+                    myJournal.WriteToFile("testjournal.txt");
+                    break;
 
             }
         }

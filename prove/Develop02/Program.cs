@@ -10,6 +10,7 @@ class Program
         //journalEntry.DisplayJournalEntry();
         //Console.WriteLine(journalEntry.CreateFileSystemString());
         int input = 0;
+        string fileName = "testing";
         Journal myJournal = new Journal();
         while(input != 5)
         {
@@ -25,10 +26,16 @@ class Program
                     myJournal.DisplayJournal();
                     break;
                 case 3:
-                    myJournal.ReadFromFile("testjournal.txt");
+                    Console.WriteLine("What is the file name you want to read?");
+                    Console.Write("> ");
+                    fileName = Console.ReadLine();
+                    myJournal.ReadFromFile(fileName + ".txt");
                     break;
                 case 4:
-                    myJournal.WriteToFile("testjournal.txt");
+                    Console.WriteLine("What is the name of the file you want to save to?");
+                    Console.Write("> ");
+                    fileName = Console.ReadLine();
+                    myJournal.WriteToFile(fileName + ".txt");
                     break;
 
             }

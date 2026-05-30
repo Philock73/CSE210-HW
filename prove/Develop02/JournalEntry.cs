@@ -7,14 +7,18 @@ class JournalEntry
     {
         "How are you feeling today?",
         "How were your classes today?",
-        "How was your activities that you did?"
+        "How was your activities that you did?",
+        "How is your physical activities going?",
+        "What was a tender mercy from the Lord that happened today?",
+        "How is your gospel study going?"
     };
 
     public void CreateJournalEntry()
     {
+        int random = Random.Shared.Next(6);
         _date = DateTime.Now.ToShortDateString();
         // finish code to create - need random prompt
-        _prompt = _prompts[0];
+        _prompt = _prompts[random];
         Console.WriteLine(_prompt);
         _response = Console.ReadLine();
         

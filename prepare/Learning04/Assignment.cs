@@ -12,7 +12,7 @@
     }
     public string GetSummary()
     {
-        _info = _studentName + " " + _topic;
+        _info = _studentName + ", " + _topic;
 
         return _info;
     }

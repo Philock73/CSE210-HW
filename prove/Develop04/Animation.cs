@@ -21,7 +21,7 @@
         Console.WriteLine("How long?");
         int seconds = int.Parse(Console.ReadLine());
         DateTime now = DateTime.Now;
-        DateTime endTime = now.AddSeconds(seconds);
+        DateTime endTime = now.AddSeconds(seconds + 1);
         while(DateTime.Now < endTime)
         {
             Console.Write($"{seconds}");

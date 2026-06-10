@@ -6,5 +6,6 @@ class Program
     {
         Animation myAnimation = new Animation();
         myAnimation.MakeAnimation();
+        myAnimation.CountDown();
     }
 }

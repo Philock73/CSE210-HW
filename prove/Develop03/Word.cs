@@ -6,11 +6,16 @@ class Word
 
     bool _hidden;
 
+    char[] letters = [];
+
     public Word(string word, bool hidden)
     {
-        char[] letters = [];
-            
-        if (hidden)
+        _hidden = hidden;
+        
+    }
+    public string CheckWord(string word)
+    {
+        if (_hidden)
         {
             letters = word.ToCharArray();
             foreach (char letter in letters)
@@ -23,6 +28,6 @@ class Word
         {
             _word = word;
         }
-        
+        return _word;
     }
 }

@@ -12,23 +12,24 @@ class Word
     {
         _hidden = hidden;
         
+        _word = word;
     }
     public string CheckWord(string word)
     {
-        if (_hidden)
+        if (!_hidden)
         {
+            _word = "";
             letters = word.ToCharArray();
             foreach (char letter in letters)
             {
-
-                Console.Write("_");
+                _word += "_";
+    
             }
-            _word = " ";
 
         }
         else
         {
-            _word = word + " ";
+            _word = word;
         }
         return _word;
     }

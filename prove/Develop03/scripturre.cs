@@ -61,15 +61,16 @@ class Scripture
         
         Console.WriteLine(ammount);
         
-        while(ammounthidden != ammount)
+        while(ammounthidden <= ammount)
         {
             foreach(string word in words)
             {            
                 bool hide = CheckHidden(word);
                 Word myWord = new Word(word, hide);
-                myWord.CheckWord(word);
-                Console.Write(word + " ");
+                string welcome = myWord.CheckWord(word);
+                Console.Write(welcome);
             }
+            HideWords();
             ammounthidden = hiddenwords.Count();
             Console.ReadLine();
         }
@@ -91,16 +92,18 @@ class Scripture
     public void HideWords()
     {
         int hiding = 0;
-        while(hiding < 1)
+        while(hiding < 3)
         {
             Random random = new Random();
             string word;
             word = words[Random.Shared.Next(words.Count())];
-            while (hiddenwords.Contains(word))
+            if (hiddenwords.Count() < words.Count())
             {
-                word = words[Random.Shared.Next(words.Count())];
+                while (hiddenwords.Contains(word))
+                {
+                    word = words[Random.Shared.Next(words.Count())];
+                }
             }
-
             hiddenwords.Add(word);
             hiding++;
         }

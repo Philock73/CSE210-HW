@@ -23,11 +23,12 @@ class Word
 
                 Console.Write("_");
             }
+            _word = " ";
 
         }
         else
         {
-            _word = word;
+            _word = word + " ";
         }
         return _word;
     }

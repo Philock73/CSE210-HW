@@ -13,7 +13,7 @@ class Word
         _hidden = hidden;
         
     }
-    public string CheckWord(string word)
+    public void CheckWord(string word)
     {
         if (_hidden)
         {
@@ -28,6 +28,5 @@ class Word
         {
             _word = word;
         }
-        return _word;
     }
 }

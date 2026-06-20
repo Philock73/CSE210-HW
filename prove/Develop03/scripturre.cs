@@ -10,7 +10,11 @@ class Scripture
 
     private string _reference;
 
-    string[] words;
+    private List<string> hiddenwords = new List<string>();
+
+    private List<string> words = new List<string>();
+
+    
 
     public Scripture(string book, int chapter, int startingVerse, string reference)
     {
@@ -21,6 +25,13 @@ class Scripture
         _startingVerse = startingVerse;
 
         _reference = reference;
+
+        string[] split = _reference.Split(" ");
+
+        foreach(string i in split)
+        {
+            words.Add(i);
+        }
     }
     public Scripture(string book, int chapter, int startingVerse, int endVerse, string reference)
     {
@@ -33,14 +44,66 @@ class Scripture
         _endVerse = endVerse;
 
         _reference = reference;
+
+        string[] split = _reference.Split();
+
+        foreach(string i in split)
+        {
+            words.Add(i);
+        }
     }
 
     public void GetScripture()
     {
-        words = _reference.Split(" ");
-        foreach(string word in words)
+        int ammount = words.Count();
+        
+        int ammounthidden = hiddenwords.Count();
+        
+        Console.WriteLine(ammount);
+        
+        while(ammounthidden != ammount)
         {
-            Console.Write(word + " ");
+            foreach(string word in words)
+            {            
+                bool hide = CheckHidden(word);
+                Word myWord = new Word(word, hide);
+                myWord.CheckWord(word);
+                Console.Write(word + " ");
+            }
+            ammounthidden = hiddenwords.Count();
+            Console.ReadLine();
         }
+    }
+
+    public bool CheckHidden(string word)
+    {
+        bool hide;
+        if(hiddenwords.Contains(word))
+        {
+            hide = true;
+        }
+        else
+        {
+            hide = false;
+        }
+        return hide;
+    }
+    public void HideWords()
+    {
+        int hiding = 0;
+        while(hiding < 1)
+        {
+            Random random = new Random();
+            string word;
+            word = words[Random.Shared.Next(words.Count())];
+            while (hiddenwords.Contains(word))
+            {
+                word = words[Random.Shared.Next(words.Count())];
+            }
+
+            hiddenwords.Add(word);
+            hiding++;
+        }
+        
     }
 }

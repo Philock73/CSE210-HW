@@ -13,13 +13,14 @@ class Word
         _hidden = hidden;
         
     }
-    public void CheckWord(string word)
+    public string CheckWord(string word)
     {
         if (_hidden)
         {
             letters = word.ToCharArray();
             foreach (char letter in letters)
             {
+
                 Console.Write("_");
             }
 
@@ -28,5 +29,6 @@ class Word
         {
             _word = word;
         }
+        return _word;
     }
 }

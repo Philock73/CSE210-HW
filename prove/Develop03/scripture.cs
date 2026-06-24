@@ -4,9 +4,7 @@ class Scripture
 
     private int _chapter;
 
-    private int _startingVerse;
-
-    private int _endVerse;
+    private string _verses;
 
     private int _hiddenMax = 0;
 
@@ -22,7 +20,7 @@ class Scripture
 
         _chapter = chapter;
 
-        _startingVerse = startingVerse;
+        _verses = $"{startingVerse}";
 
         _reference = reference;
 
@@ -41,9 +39,7 @@ class Scripture
 
         _chapter = chapter;
 
-        _startingVerse = startingVerse;
-
-        _endVerse = endVerse;
+        _verses = $"{startingVerse}-{endVerse}";
 
         _reference = reference;
 
@@ -58,14 +54,14 @@ class Scripture
 
     public void GetScripture()
     {
+        ScriptureTitle reference = new ScriptureTitle(_book, _chapter, _verses);
         int ammount = _words.Count();
         
         int ammounthidden = _hiddenMax;
-        
-        Console.WriteLine(ammount);
-        
+        string scriptureTitle = reference.GetDisplayString();
         do
         {
+            Console.WriteLine(scriptureTitle);
             foreach(Word word in _words)
             {            
                 bool hide = word.CheckWord();

@@ -12,9 +12,7 @@ class Scripture
 
     private string _reference;
 
-    List<string> words = new List<string>();
-
-    List<string> hiddenwords = new List<string>();
+    List<Word> _words = new List<Word>();
 
     public Scripture(){}
     public Scripture(string book, int chapter, int startingVerse, string reference)
@@ -32,8 +30,8 @@ class Scripture
 
         foreach(string i in split)
         {
-            words.Add(i);
-            hiddenwords.Add(i);
+            Word tempWord = new Word(i);
+            _words.Add(tempWord);
         }
     }
     public Scripture(string book, int chapter, int startingVerse, int endVerse, string reference)
@@ -53,16 +51,14 @@ class Scripture
 
         foreach(string i in split)
         {
-            words.Add(i);
-
-            hiddenwords.Add(i);
-
+            Word tempWord = new Word(i);
+            _words.Add(tempWord);
         }
     }
 
     public void GetScripture()
     {
-        int ammount = words.Count();
+        int ammount = _words.Count();
         
         int ammounthidden = _hiddenMax;
         
@@ -70,60 +66,40 @@ class Scripture
         
         do
         {
-            foreach(string word in words)
+            foreach(Word word in _words)
             {            
-                bool hide = CheckHidden(word, hiddenwords);
-                Word myWord = new Word(word, hide);
-                string action = myWord.CheckWord(word);
-                Console.Write(action + " ");
+                bool hide = word.CheckWord();
+                Console.Write(word.GetWord());
             }
-            HideWords(words, hiddenwords);
-            ammounthidden = _hiddenMax;
             Console.ReadLine();
+            HideWords(_words);
+            ammounthidden = _hiddenMax;
             Console.Clear();
             Console.Write("\n\n\n");
-        }while(ammounthidden < ammount);
+        }while(ammounthidden <= ammount);
     }
-
-    public bool CheckHidden(string word, List<string> hiddenwords)
-    {
-        bool hide;
-        int location = words.IndexOf(word);
-        if(words[location] == hiddenwords[location])
-        {
-            hide = true;
-        }
-        else
-        {
-            hide = false;
-        }
-        return hide;
-    }
-    public void HideWords(List<string> words, List<string> hiddenwords)
+    public void HideWords(List<Word> _words)
     {
         int hiding = 0;
         while(hiding < 3)
         {
             Random random = new Random();
 
-            string word;
+            Word word;
 
-            word = words[random.Next(words.Count())];
-            if(_hiddenMax < words.Count())
+            word = _words[random.Next(_words.Count())];
+            if(_hiddenMax < _words.Count())
             {
-                while (words.IndexOf(word) != hiddenwords.IndexOf(word))
+                while (word.CheckWord())
                 {
-                    word = words[Random.Shared.Next(words.Count())];
+                    word = _words[Random.Shared.Next(_words.Count())];
                 }
-            
-            hiddenwords.Insert(words.IndexOf(word), " ");
-
-            
+                word.HideWord();            
             }
 
             _hiddenMax++;
 
-            if(_hiddenMax == words.Count())
+            if(_hiddenMax == _words.Count())
             {
                 hiding = 3;
             }

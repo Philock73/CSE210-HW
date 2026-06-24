@@ -6,31 +6,37 @@ class Word
 
     bool _hidden;
 
-    char[] letters = [];
+    //char[] letters = [];
 
-    public Word(string word, bool hidden)
+    public Word(string word)
     {
-        _hidden = hidden;
+        _hidden = false;
         
         _word = word;
     }
-    public string CheckWord(string word)
+    public string GetWord()
     {
-        if (!_hidden)
+        string tempword = "";
+        if (_hidden)
         {
-            _word = "";
-            letters = word.ToCharArray();
-            foreach (char letter in letters)
+            foreach (char letter in _word)
             {
-                _word += "_";
-    
+                tempword += "_";
             }
-
         }
         else
         {
-            _word = word;
+            tempword = _word;
         }
-        return _word;
+        return tempword + " ";
+    }
+    public bool CheckWord()
+    {
+        return _hidden;
+    }
+
+    public void HideWord()
+    {
+        _hidden = true;
     }
 }

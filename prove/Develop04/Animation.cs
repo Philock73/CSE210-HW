@@ -2,10 +2,10 @@
 {
     
     
-    public void MakeAnimation()
+    public void MakeAnimation(int i)
     {
         DateTime now = DateTime.Now;
-        DateTime endTime = now.AddSeconds(1);
+        DateTime endTime = now.AddSeconds(i);
         
         string animationString = "-\\|/";
         int index = 0;

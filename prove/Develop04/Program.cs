@@ -4,8 +4,26 @@ class Program
 {
     static void Main(string[] args)
     {
-        Animation myAnimation = new Animation();
-        myAnimation.MakeAnimation();
-        myAnimation.CountDown();
+        Menu myMenu = new Menu();
+        int input = 0;
+        while(input != 4)
+        {
+            Console.Clear();
+            input = myMenu.DisplayMenu();
+            switch (input)
+            {
+                case 1:
+                    // Breathing
+                    break;
+                case 2:
+                    // Listing
+                    break;
+                case 3:
+                    // Reflection
+                    break;
+                
+            }
+        }
+        
     }
 }

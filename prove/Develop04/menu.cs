@@ -3,7 +3,7 @@ class Menu
     private int _response;
     public int DisplayMenu()
     {
-        Console.WriteLine("What exercise are you wanting to accomplish today? \n 1: Breathing\n 2: Listing\n 3: Reflecting");
+        Console.WriteLine("What exercise are you wanting to accomplish today? \n 1: Breathing\n 2: Listing\n 3: Reflecting\n 4: Quit");
         Console.Write("> ");
         int response = int.Parse(Console.ReadLine());
         if(response > 4 | response < 1)

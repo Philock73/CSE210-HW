@@ -14,6 +14,8 @@ class Program
             {
                 case 1:
                     // Breathing
+                    Breathing myBreathing = new Breathing(true, "Breathing", false);
+                    myBreathing.breathingProtocol(); 
                     break;
                 case 2:
                     // Listing

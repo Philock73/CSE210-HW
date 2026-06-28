@@ -16,12 +16,10 @@
             Console.Write("\b");
         }
     }
-    public void CountDown()
+    public void CountDown(int seconds)
     {
-        Console.WriteLine("How long?");
-        int seconds = int.Parse(Console.ReadLine());
         DateTime now = DateTime.Now;
-        DateTime endTime = now.AddSeconds(seconds + 1);
+        DateTime endTime = now.AddSeconds(seconds);
         while(DateTime.Now < endTime)
         {
             Console.Write($"{seconds}");

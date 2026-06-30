@@ -11,10 +11,8 @@ class Breathing : Exercise
     }
     public void breathingProtocol()
     {
-        int completion = CreateExercise();
+        DateTime endTime = CreateExercise();
         Animation myAnimation = new Animation();
-        DateTime now = DateTime.Now;
-        DateTime endTime = now.AddSeconds(completion + 1);
         int ammount;
         Console.Write("How long inbetween breaths?\n> ");
         ammount = int.Parse(Console.ReadLine());

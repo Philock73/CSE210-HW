@@ -1,20 +1,13 @@
+using System.ComponentModel;
+
 class Exercise
 {
-    private int _amountofTime;
+    private DateTime _amountofTime;
 
     private string _type;
 
     private bool _complete;
 
-    public Exercise()
-    {
-        _amountofTime = 0;
-
-        _type = " ";
-        
-        _complete = false;
-
-    }
 
     public Exercise(string type, bool complete)
     {
@@ -23,9 +16,10 @@ class Exercise
         _complete = complete;
 
     }
-    public int CreateExercise()
+    public DateTime CreateExercise()
     {
         int seconds;
+
         do
         {
             Console.WriteLine($"{_type} Exercise: ");
@@ -34,7 +28,11 @@ class Exercise
         
             if(seconds > 0 | seconds < 99)
             {
-                _amountofTime = seconds;
+                DateTime now = DateTime.Now;
+    
+                DateTime endTime = now.AddSeconds(seconds + 1);
+
+                _amountofTime = endTime;
             }
             else
             {

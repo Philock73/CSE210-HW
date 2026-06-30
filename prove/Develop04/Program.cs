@@ -24,6 +24,8 @@ class Program
                     break;
                 case 3:
                     // Reflection
+                    Reflection myReflection = new Reflection(0, "Reflection", false);
+                    myReflection.reflectionProtocal();
                     break;
                 
             }

@@ -29,15 +29,12 @@ class Listing : Exercise
 
   public void listingProtocal()
   {
-    int completion = CreateExercise();
+    DateTime endTime = CreateExercise();
 
     Random randomQuestion = new Random();
 
     Animation waiting = new Animation();
 
-    DateTime now = DateTime.Now;
-    
-    DateTime endTime = now.AddSeconds(completion + 1);
 
     string question = myThoughts[randomQuestion.Next(myThoughts.Count())];
 

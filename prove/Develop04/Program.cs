@@ -19,6 +19,8 @@ class Program
                     break;
                 case 2:
                     // Listing
+                    Listing myListing = new Listing(5,"Listing", false);
+                    myListing.listingProtocal();
                     break;
                 case 3:
                     // Reflection

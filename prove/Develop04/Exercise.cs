@@ -1,4 +1,7 @@
 using System.ComponentModel;
+using System.Net.NetworkInformation;
+using System.Reflection.Metadata.Ecma335;
+using System.Security.Cryptography.X509Certificates;
 
 class Exercise
 {
@@ -40,6 +43,11 @@ class Exercise
                 
             }
         }while(seconds < 0 | seconds > 99);
+        _complete = true;
         return _amountofTime;
+    }
+    public bool CheckCompletion()
+    {
+     return _complete;   
     }
 }

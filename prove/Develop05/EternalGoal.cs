@@ -7,6 +7,7 @@ class EternalGoal : BaseGoal
 
     public override void CreateGoal()
     {
+        SetGoalType("Eternal");
         SetName();
         SetDescription();
         SetNumberOfPoints();

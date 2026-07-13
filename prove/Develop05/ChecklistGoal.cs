@@ -7,6 +7,7 @@ class ChecklistGoal : BaseGoal
 
     public override void CreateGoal()
     {
+        SetGoalType("Checklist");
         SetName();
         SetDescription();
         SetNumberOfPoints();

@@ -7,6 +7,7 @@ class SimpleGoal : BaseGoal
 
     public override void CreateGoal()
     {
+        SetGoalType("Simple");
         SetName();
         SetDescription();
         SetNumberOfPoints();

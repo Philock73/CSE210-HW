@@ -36,6 +36,10 @@ abstract class BaseGoal
         _description = Console.ReadLine();
 
     }
+    public void SetGoalType(string goalType)
+    {
+        _goalType = goalType;
+    }
     public void SetNumberOfPoints()
     {
         Console.Write($"Enter the points for {_name} goal: ");
@@ -49,7 +53,7 @@ abstract class BaseGoal
         {
             status = 'X';
         }
-        return ($"[{status}] Name: {_name}, Description: {_description}, Points: {_numberOfPoints}");
+        return ($"[{status}] Type: {_goalType} Name: {_name}, Description: {_description}, Points: {_numberOfPoints}");
     }
 
     public int MarkComplete()

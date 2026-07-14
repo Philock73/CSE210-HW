@@ -1,3 +1,5 @@
+using System.Runtime.CompilerServices;
+
 class SimpleGoal : BaseGoal
 {
     public SimpleGoal() : base()
@@ -13,8 +15,9 @@ class SimpleGoal : BaseGoal
         SetNumberOfPoints();
     }
 
-    public override void RecordEvent()
+    public override int RecordEvent(int total)
     {
-        // populate later   
+        int money = total + MarkComplete();
+        return money;
     }
 }

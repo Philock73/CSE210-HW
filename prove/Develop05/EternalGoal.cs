@@ -14,9 +14,10 @@ class EternalGoal : BaseGoal
     }
 
 
-    public override void RecordEvent()
+    public override int RecordEvent(int total)
     {
-        
+        int money = total + MarkComplete();
+        return money;
     }
 
 }

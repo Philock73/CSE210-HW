@@ -1,11 +1,13 @@
 using System;
+using System.Numerics;
+using System.Security.Authentication.ExtendedProtection;
 
 class Program
 {
     static void Main(string[] args)
     {
         List<BaseGoal> myGoals = new List<BaseGoal>();
-
+        int levelPoints = 0;
         int actionStep = 0;
         Menu myMenu = new Menu();
         while(actionStep != 4)
@@ -57,12 +59,27 @@ class Program
                 case 2:
                     Console.Clear();
                     Console.Write("What Goal are you wanting to record?\n");
+                    int i = 1;
                     foreach(BaseGoal goal in myGoals)
                     {
-                        Console.WriteLine(goal.GetDesplayString());
+                        Console.WriteLine($"{i}) " + goal.GetDesplayString());
+                        i++;
                     }
                     Console.Write("> ");
-                    Console.ReadLine();
+                    int change = int.Parse(Console.ReadLine());
+                    if(change > 0 & change <= myGoals.Count())
+                    {
+                        int money = myGoals[change - 1].RecordEvent(levelPoints);
+                        Console.WriteLine(myGoals[change - 1].GetDesplayString());
+                        Console.WriteLine(money);
+                        Thread.Sleep(1500);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Sorry you entered something out of the range.\nPleas try again");
+                        Thread.Sleep(2000);
+                    }
+
                 break;
 
                 case 3:

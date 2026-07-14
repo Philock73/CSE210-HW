@@ -2,14 +2,10 @@ using System;
 
 class Program
 {
-    public List<BaseGoal> _goals = new List<BaseGoal>
-    {
-        new SimpleGoal(),
-        new EternalGoal(),
-        new ChecklistGoal(),
-    };
     static void Main(string[] args)
     {
+        List<BaseGoal> myGoals = new List<BaseGoal>();
+
         int actionStep = 0;
         Menu myMenu = new Menu();
         while(actionStep != 4)
@@ -32,19 +28,19 @@ class Program
                             {
                                 SimpleGoal itsSimple = new SimpleGoal();
                                 itsSimple.CreateGoal();
-                                itsSimple.AddGoal(itsSimple);
+                                itsSimple.AddGoal(itsSimple, myGoals);
                             }
                             else if(type == 2)
                             {
                                 EternalGoal itsEternal = new EternalGoal();
                                 itsEternal.CreateGoal();
-                                itsEternal.AddGoal(itsEternal);
+                                itsEternal.AddGoal(itsEternal, myGoals);
                             }
                             else if(type == 3)
                             {
                                 ChecklistGoal itsaCheck = new ChecklistGoal();
                                 itsaCheck.CreateGoal();
-                                itsaCheck.AddGoal(itsaCheck);
+                                itsaCheck.AddGoal(itsaCheck, myGoals);
                             }
                         
                         }
@@ -60,8 +56,13 @@ class Program
 
                 case 2:
                     Console.Clear();
-                    Console.Write("What Goal are you wanting to record?\n > ");
-                    string fileLookUp = Console.ReadLine();
+                    Console.Write("What Goal are you wanting to record?\n");
+                    foreach(BaseGoal goal in myGoals)
+                    {
+                        Console.WriteLine(goal.GetDesplayString());
+                    }
+                    Console.Write("> ");
+                    Console.ReadLine();
                 break;
 
                 case 3:

@@ -20,12 +20,6 @@ abstract class BaseGoal
 
     private int _completed;
 
-    private List<BaseGoal> _goals = new List<BaseGoal>
-    {
-        new SimpleGoal(),
-        new EternalGoal(),
-        new ChecklistGoal()
-    };
 
     public BaseGoal()
     {
@@ -92,9 +86,9 @@ abstract class BaseGoal
         return $"[{status}] Type: {_goalType} Name: {_name}, Description: {_description}, Points: {_numberOfPoints}, Completion progress {_completed}/{_ammount}";
     }
 
-    public void AddGoal(BaseGoal goal)
+    public void AddGoal(BaseGoal goal, List<BaseGoal> myGoals)
     {
-        _goals.Append(goal);
+       myGoals.Add(goal);
     }
 
     public int MarkComplete()
@@ -107,21 +101,21 @@ abstract class BaseGoal
         return _numberOfPoints;
     }
 
-    public void WriteToFile(string filename)
+    public void WriteToFile(string filename, List<BaseGoal> myGoals)
     {
         using (StreamWriter outputFile = new StreamWriter(filename))
         {
-            foreach(BaseGoal entry in _goals)
+            foreach(BaseGoal entry in myGoals)
             {
                 outputFile.WriteLine(entry.GetDesplayString());
             }
         }
     }
-    public void ReadFromFile(string filename)
+    public void ReadFromFile(string filename, List<BaseGoal> myGoals)
     {
-        foreach (BaseGoal goal in _goals)
+        foreach (BaseGoal goal in myGoals)
         {
-            this.AddGoal(goal);
+            this.AddGoal(goal, myGoals);
         }
     }
 

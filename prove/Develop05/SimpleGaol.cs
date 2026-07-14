@@ -11,7 +11,6 @@ class SimpleGoal : BaseGoal
         SetName();
         SetDescription();
         SetNumberOfPoints();
-
     }
 
     public override void RecordEvent()

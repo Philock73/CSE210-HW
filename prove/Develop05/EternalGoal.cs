@@ -13,6 +13,7 @@ class EternalGoal : BaseGoal
         SetNumberOfPoints();
     }
 
+
     public override void RecordEvent()
     {
         

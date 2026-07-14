@@ -47,7 +47,7 @@ abstract class BaseGoal
         _description = Console.ReadLine();
 
     }
-    public void SetGoalType(string goalType)
+    public int SetGoalType(string goalType)
     {
         _goalType = goalType;
         if(goalType == "Simple")
@@ -69,6 +69,7 @@ abstract class BaseGoal
             }
             _ammount = limit;
         }
+        return _ammount;
     }
     public void SetNumberOfPoints()
     {
@@ -93,12 +94,20 @@ abstract class BaseGoal
 
     public int MarkComplete()
     {
-        _completed++;
-        if(_completed == _ammount)
+        if(_completed != _ammount)
         {
-            _status = true;
+            _completed++;
+            if(_completed == _ammount)
+            {
+                _status = true;
+            }
+            return _numberOfPoints;
         }
-        return _numberOfPoints;
+        else
+        {
+            Console.WriteLine("Sorry but you have already completed the task");
+            return 0;
+        }
     }
 
     public void WriteToFile(string filename, List<BaseGoal> myGoals)

@@ -1,5 +1,8 @@
+using System.Data.SqlTypes;
+
 class ChecklistGoal : BaseGoal
 {
+    private int _ammount;
     public ChecklistGoal() : base()
     {
         
@@ -7,16 +10,27 @@ class ChecklistGoal : BaseGoal
 
     public override void CreateGoal()
     {
-        SetGoalType("Checklist");
+        int limit = SetGoalType("Checklist");
         SetName();
         SetDescription();
         SetNumberOfPoints();
-
+        _ammount = limit;
     }
 
     public override int RecordEvent(int total)
     {
-        int money = total + MarkComplete();
+        int i = 1;
+        int money = 0;
+        i++;
+        if(i < _ammount)
+        {   
+            money = total + MarkComplete();
+        }
+        else if(i == _ammount)
+        {
+            money = total + (MarkComplete() * 10);
+        }
         return money;
+        
     }
 }

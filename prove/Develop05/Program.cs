@@ -69,10 +69,9 @@ class Program
                     int change = int.Parse(Console.ReadLine());
                     if(change > 0 & change <= myGoals.Count())
                     {
-                        int money = myGoals[change - 1].RecordEvent(levelPoints);
-                        Console.WriteLine(myGoals[change - 1].GetDesplayString());
-                        Console.WriteLine(money);
-                        Thread.Sleep(1500);
+                        levelPoints =+ myGoals[change - 1].RecordEvent(levelPoints);
+                        Console.WriteLine(levelPoints);
+                        Thread.Sleep(3000);
                     }
                     else
                     {

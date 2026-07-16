@@ -15,6 +15,7 @@ class Program
         while(actionStep != 5)
         {
             Console.Clear();
+            Console.WriteLine($"All Your Points: {levelPoints}");
             actionStep = myMenu.DisplayMenu();
             switch(actionStep)
             {
@@ -87,7 +88,7 @@ class Program
                     Console.WriteLine("What is the file name you want to read?");
                     Console.Write("> ");
                     fileName = Console.ReadLine();
-                    myGoals = goals.ReadFromFile(fileName + ".txt");
+                    (myGoals, levelPoints)= goals.ReadFromFile(fileName + ".txt");
                     break;
                 case 4:
                     Console.WriteLine("What is the name of the file you want to save to?");
@@ -95,7 +96,7 @@ class Program
                     fileName = Console.ReadLine();
                     foreach(BaseGoal goal in myGoals)
                     {
-                        goal.WriteToFile(fileName + ".txt", myGoals);
+                        goal.WriteToFile(fileName + ".txt", myGoals, levelPoints);
                     }
                     break;
 

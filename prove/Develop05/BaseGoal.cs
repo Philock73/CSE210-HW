@@ -20,6 +20,8 @@ abstract class BaseGoal
 
     private int _completed;
 
+    private int _levelPoints;
+
 
     public BaseGoal()
     {
@@ -108,10 +110,16 @@ abstract class BaseGoal
        myGoals.Add(goal);
     }
 
+    public void SetLevelPoints(int total)
+    {
+        _levelPoints = total;
+    }
+
     public int MarkComplete()
     {
         if(_completed != _ammount)
-        {
+        {  
+            _levelPoints =+ _numberOfPoints;
             _completed++;
             if(_completed == _ammount)
             {
@@ -126,7 +134,7 @@ abstract class BaseGoal
         }
     }
 
-    public void WriteToFile(string filename, List<BaseGoal> myGoals)
+    public void WriteToFile(string filename, List<BaseGoal> myGoals, int total)
     {
         using (StreamWriter outputFile = new StreamWriter(filename))
         {
@@ -135,9 +143,15 @@ abstract class BaseGoal
                 outputFile.WriteLine(entry.GetFileSystemInfo());
             }
         }
+        using (StreamWriter outputFile = new StreamWriter("lvl" + filename))
+        {
+            outputFile.WriteLine(total);
+        }
     }
-    public List<BaseGoal> ReadFromFile(string filename)
+    public (List<BaseGoal> , int) ReadFromFile(string filename)
     {
+        string[] everypoint = System.IO.File.ReadAllLines("lvl" + filename);
+        _levelPoints = int.Parse(everypoint[0]);
         string[] lines = System.IO.File.ReadAllLines(filename);
         List<BaseGoal> newFile = new List<BaseGoal>();
         BaseGoal entry = new SimpleGoal();
@@ -167,7 +181,7 @@ abstract class BaseGoal
             }
             newFile.Add(entry);
         }
-        return newFile;
+        return (newFile, _levelPoints);
     }
 
     public abstract void CreateGoal();

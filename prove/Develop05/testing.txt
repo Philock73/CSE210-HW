@@ -1,0 +1,3 @@
+Simple#cry#cry more#35#True#1#1
+Eternal#pray#daily#50#False#9999#1
+Checklist#Call family#all of them#125#False#5#1

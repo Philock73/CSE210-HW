@@ -5,6 +5,11 @@ class EternalGoal : BaseGoal
         
     }
 
+    public EternalGoal(string goalType, string name, string description, int numberofPoints, bool status, int ammount, int completed) : base (goalType, name, description, numberofPoints, status, ammount, completed)
+    {
+        
+    }
+
     public override void CreateGoal()
     {
         SetGoalType("Eternal");

@@ -7,10 +7,12 @@ class Program
     static void Main(string[] args)
     {
         List<BaseGoal> myGoals = new List<BaseGoal>();
+        BaseGoal goals = new SimpleGoal();
         int levelPoints = 0;
+        string fileName = "testing";
         int actionStep = 0;
         Menu myMenu = new Menu();
-        while(actionStep != 4)
+        while(actionStep != 5)
         {
             Console.Clear();
             actionStep = myMenu.DisplayMenu();
@@ -22,7 +24,7 @@ class Program
                 int type = int.Parse(Console.ReadLine());
                 while(good)
                 {
-                    if (type > 0 & type < 4)
+                    if (type > 0 & type < 5)
                         {
                             good = false;
 
@@ -70,7 +72,7 @@ class Program
                     if(change > 0 & change <= myGoals.Count())
                     {
                         levelPoints =+ myGoals[change - 1].RecordEvent(levelPoints);
-                        Console.WriteLine(levelPoints);
+                        Console.WriteLine($"Your total points are {levelPoints}");
                         Thread.Sleep(3000);
                     }
                     else
@@ -81,9 +83,21 @@ class Program
 
                 break;
 
-                case 3:
-                    
-                break;
+                 case 3:
+                    Console.WriteLine("What is the file name you want to read?");
+                    Console.Write("> ");
+                    fileName = Console.ReadLine();
+                    myGoals = goals.ReadFromFile(fileName + ".txt");
+                    break;
+                case 4:
+                    Console.WriteLine("What is the name of the file you want to save to?");
+                    Console.Write("> ");
+                    fileName = Console.ReadLine();
+                    foreach(BaseGoal goal in myGoals)
+                    {
+                        goal.WriteToFile(fileName + ".txt", myGoals);
+                    }
+                    break;
 
             }
         }

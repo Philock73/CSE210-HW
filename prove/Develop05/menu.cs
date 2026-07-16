@@ -5,10 +5,10 @@ class Menu
     {
         int decision;
         Console.WriteLine("Please enter what you want to do.");
-        Console.WriteLine(" 1) Create a Goal \n 2) Record Goal \n 3) Check Status \n 4) Quit");
+        Console.WriteLine(" 1) Create a Goal \n 2) Record Goal \n 3) Load Goals \n 4) Save Goals\n 5) Quit");
         Console.Write("> ");
         decision = int.Parse(Console.ReadLine());
-        if(decision > 0 & decision < 5)
+        if(decision > 0 & decision < 6)
         {
             _decision = decision;
         }

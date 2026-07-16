@@ -33,6 +33,17 @@ abstract class BaseGoal
 
     }
 
+    public BaseGoal(string goalType, string name, string description, int numberofPoints, bool status, int ammount, int completed)
+    {
+        _name = name;
+        _description = description;
+        _numberOfPoints = numberofPoints;
+        _status = status;
+        _goalType = goalType;
+        _ammount = ammount;
+        _completed = completed;
+    }
+
 
     
     public void SetName()
@@ -87,6 +98,11 @@ abstract class BaseGoal
         return $"[{status}] Type: {_goalType} Name: {_name}, Description: {_description}, Points: {_numberOfPoints}, Completion progress {_completed}/{_ammount}";
     }
 
+    public string GetFileSystemInfo()
+    {
+        return $"{_goalType}#{_name}#{_description}#{_numberOfPoints}#{_status}#{_ammount}#{_completed}";
+    }
+
     public void AddGoal(BaseGoal goal, List<BaseGoal> myGoals)
     {
        myGoals.Add(goal);
@@ -116,16 +132,42 @@ abstract class BaseGoal
         {
             foreach(BaseGoal entry in myGoals)
             {
-                outputFile.WriteLine(entry.GetDesplayString());
+                outputFile.WriteLine(entry.GetFileSystemInfo());
             }
         }
     }
-    public void ReadFromFile(string filename, List<BaseGoal> myGoals)
+    public List<BaseGoal> ReadFromFile(string filename)
     {
-        foreach (BaseGoal goal in myGoals)
+        string[] lines = System.IO.File.ReadAllLines(filename);
+        List<BaseGoal> newFile = new List<BaseGoal>();
+        BaseGoal entry = new SimpleGoal();
+        foreach (string line in lines)
         {
-            this.AddGoal(goal, myGoals);
+            string[] parts = line.Split("#");
+
+            string goalType = parts[0];
+            string name = parts[1];
+            string description = parts[2];
+            int numberofPoints = int.Parse(parts[3]);
+            bool status = bool.Parse(parts[4]);
+            int ammount = int.Parse(parts[5]);
+            int completed = int.Parse(parts[6]);
+
+            if(goalType == "Simple")
+            {
+                entry = new SimpleGoal(goalType, name, description, numberofPoints, status, ammount, completed);
+            }
+            else if(goalType == "Eternal")
+            {
+                entry = new EternalGoal(goalType, name, description, numberofPoints, status, ammount, completed);
+            }
+            else if(goalType == "Checklist")
+            {
+                entry = new ChecklistGoal(goalType, name, description, numberofPoints, status, ammount, completed);
+            }
+            newFile.Add(entry);
         }
+        return newFile;
     }
 
     public abstract void CreateGoal();
